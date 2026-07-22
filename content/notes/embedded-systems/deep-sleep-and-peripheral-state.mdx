@@ -1,0 +1,19 @@
+---
+title: "Deep Sleep and Peripheral State"
+date: "2025-09-23"
+tags: ["embedded-systems", "esp32", "power"]
+---
+
+## The core problem
+
+Deep sleep on most MCUs resets peripheral state (or the peripheral is
+powered down entirely), but the *external device* on the other end of that
+peripheral doesn't know that. If a transaction was interrupted mid-flight,
+the external device can be left in an inconsistent state after wake.
+
+## Practical rule
+
+Don't assume `begin()`/`init()` calls are idempotent no-ops after wake -
+explicitly reinitialize any peripheral touched before sleep, and add a
+defensive recovery path (e.g. I2C bus-clear) for the specific failure modes
+of whatever's attached.

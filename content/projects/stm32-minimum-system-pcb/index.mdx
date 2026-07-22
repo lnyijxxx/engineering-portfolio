@@ -1,0 +1,39 @@
+---
+title: "STM32 Robotics Development Board"
+date: "2026-07-01"
+status: "active"
+tags: ["embedded-systems", "stm32", "pcb-design", "kicad", "robotics"]
+summary: "A custom STM32F411 controller being designed for robotics interfaces, firmware development, and hardware experimentation."
+---
+
+## Overview
+
+A custom STM32F411 controller for robotics applications. The project follows
+the complete embedded hardware workflow from requirements and schematic capture
+through layout, manufacturing, assembly, firmware bring-up, and validation.
+
+## Current status
+
+Planning and system requirements are complete. Component selection and
+schematic design are in progress. PCB layout, manufacturing, assembly,
+firmware development, and hardware validation are planned.
+
+## Planned hardware
+
+- STM32F411 microcontroller
+- USB-C power input and 3.3 V regulation
+- SWD programming, reset, and boot configuration
+- Power and user LEDs plus a user push button
+- PWM, UART, I²C, SPI, GPIO, and sensor expansion
+- Compact two-layer PCB with mounting holes and labeled silkscreen
+
+## Validation plan
+
+Bring-up will begin with USB-C input and 3.3 V rail measurements, followed by
+SWD communication and minimal firmware. Each user-interface and communication
+peripheral will then be tested independently before robotics integration.
+
+## Intended applications
+
+Mobile robots, quadruped systems, sensor integration, servo control,
+companion-computer communication, and real-time embedded firmware experiments.

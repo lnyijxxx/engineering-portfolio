@@ -1,0 +1,19 @@
+---
+title: "PID Control Basics"
+date: "2026-02-18"
+tags: ["control-systems", "robotics"]
+---
+
+## The three terms
+
+- **P** - proportional to current error, the main driver of response speed
+- **I** - accumulates past error, eliminates steady-state offset, but adds
+  lag and can cause overshoot/windup if not clamped
+- **D** - reacts to rate of change of error, dampens oscillation but
+  amplifies sensor noise
+
+## Tuning approach
+
+Start with I and D at zero, increase P until the system oscillates, back off
+to ~50-60% of that value, then add D to damp remaining oscillation, then a
+small amount of I only if there's persistent steady-state error.

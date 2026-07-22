@@ -1,0 +1,35 @@
+---
+title: "Interrupt-Driven RISC-V Firmware"
+date: "2026-03-20"
+status: "complete"
+tags: ["risc-v", "assembly", "bare-metal", "interrupts", "embedded-systems"]
+summary: "Bare-metal RISC-V assembly implementing GPIO interrupts, PLIC routing, and an LED countdown on the SparkFun RED-V Thing Plus."
+---
+
+## Overview
+
+Bare-metal RISC-V assembly firmware developed for the SparkFun RED-V Thing
+Plus using PlatformIO and the Freedom E SDK. The program configures a GPIO
+falling-edge interrupt, routes it through the PLIC, and executes a machine-mode
+interrupt service routine.
+
+## Core behavior
+
+The main loop flashes an eight-LED bar. Pressing the S1 button generates an
+external interrupt that claims PLIC source 20, scales an LFSR-generated value,
+displays a countdown across non-contiguous GPIO pins, clears the pending source,
+completes the interrupt, restores processor context, and returns with `mret`.
+
+## Technical scope
+
+- RISC-V machine CSRs: `mtvec`, `mie`, and `mstatus`
+- GPIO falling-edge interrupt configuration
+- PLIC enable, priority, threshold, claim, and completion
+- Memory-mapped GPIO input and output
+- Register preservation and stack management inside an ISR
+- LFSR-style pseudo-random number generation
+- Hardware validation on the SparkFun RED-V Thing Plus
+
+## Outcome
+
+The firmware was successfully tested on hardware around March 20, 2026.

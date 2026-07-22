@@ -1,0 +1,17 @@
+---
+title: "systemd Service Basics"
+date: "2025-09-10"
+tags: ["linux", "systemd", "raspberry-pi"]
+---
+
+## Minimal unit file
+
+A service that should survive reboots (like an MQTT broker on a Pi) needs
+`WantedBy=multi-user.target` under `[Install]`, plus `Restart=on-failure`
+under `[Service]` if you want automatic recovery from crashes rather than
+staying down until a manual restart.
+
+## Debugging
+
+`journalctl -u <service-name> -f` for live logs is the first thing to reach
+for over anything else when a service fails silently on boot.

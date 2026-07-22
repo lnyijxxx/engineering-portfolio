@@ -1,0 +1,18 @@
+---
+title: "Tasks and Scheduling"
+date: "2026-02-10"
+tags: ["freertos", "rtos"]
+---
+
+## Task priorities
+
+Higher number = higher priority in FreeRTOS (opposite of some other RTOSes -
+worth double-checking per port). A higher-priority task that never blocks
+will starve every lower-priority task completely, not just slow them down.
+
+## Stack sizing
+
+Undersized task stacks corrupt adjacent memory silently rather than crashing
+cleanly. Enable stack overflow checking (`configCHECK_FOR_STACK_OVERFLOW`)
+during development - it's cheap insurance against a very hard-to-diagnose bug
+class.

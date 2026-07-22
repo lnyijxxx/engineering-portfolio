@@ -1,0 +1,25 @@
+---
+title: "Routing Fundamentals"
+date: "2025-11-16"
+tags: ["pcb-design", "kicad"]
+---
+
+## Crystal load capacitors
+
+Load capacitor values should account for trace and pad parasitic
+capacitance, not just the crystal's rated load capacitance. Use
+`(CL - Cstray) x 2` per capacitor, where Cstray is typically 2-5pF for short
+traces. Getting this wrong causes unreliable oscillator startup, which can
+look like a completely dead board.
+
+## Trace length matching
+
+For crystal traces specifically: keep them short and symmetric (similar
+length on both pins) to avoid unbalanced parasitic loading between the two
+legs of the oscillator circuit.
+
+## Ground plane on 2-layer boards
+
+Without a dedicated ground layer, pour ground on both layers and stitch with
+vias liberally near any high-frequency or high-current path, not just at the
+board edges.

@@ -1,0 +1,18 @@
+---
+title: "GPIO Basics"
+date: "2025-09-08"
+tags: ["raspberry-pi", "gpio"]
+---
+
+## Pin numbering schemes
+
+BCM (Broadcom chip numbering) vs physical board numbering are both in common
+use across different libraries - a wiring diagram or script written against
+one scheme will silently address the wrong pin under the other. Always
+confirm which scheme a library assumes before wiring anything.
+
+## 3.3V logic only
+
+Raspberry Pi GPIO is 3.3V and not 5V tolerant on most models - a 5V logic
+signal into a GPIO pin risks permanent damage. Level-shift any 5V peripheral
+before connecting it directly.

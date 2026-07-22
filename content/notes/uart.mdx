@@ -1,0 +1,31 @@
+---
+title: "UART"
+date: "2026-01-05"
+tags: ["uart", "serial", "communication-protocols"]
+related: ["spi", "i2c"]
+---
+
+## What it is
+
+Universal Asynchronous Receiver/Transmitter - a simple two-wire (TX/RX) serial
+protocol with no shared clock line. Both sides must agree on baud rate ahead
+of time since there's nothing else to synchronize timing.
+
+## Key parameters
+
+- **Baud rate** - bits per second. Both ends must match exactly (within ~2%
+  tolerance) or bytes get misread.
+- **Frame format** - start bit, 5-9 data bits, optional parity, 1-2 stop bits.
+  8N1 (8 data bits, no parity, 1 stop bit) is the overwhelming default.
+
+## Debugging notes
+
+A baud rate mismatch is the single most common UART failure and it doesn't
+fail cleanly - you get garbage characters, not a clean error, because the
+receiver is still sampling bits, just at the wrong intervals. If you see
+consistent garbage (not silence), check baud rate first.
+
+## Related concepts
+
+- [SPI](/notes/spi) - for when you need higher throughput and don't mind more wires
+- [I2C](/notes/i2c) - for multi-device buses on limited pins

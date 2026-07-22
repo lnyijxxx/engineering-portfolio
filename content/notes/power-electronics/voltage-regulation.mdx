@@ -1,0 +1,20 @@
+---
+title: "Voltage Regulation Basics"
+date: "2025-11-01"
+tags: ["power-electronics", "regulators"]
+---
+
+## Linear (LDO) vs switching
+
+LDOs are simple and low-noise but dissipate the voltage difference as heat -
+fine for small current draws (like an MCU at 3.3V from 5V), impractical for
+larger drops or currents. Switching regulators are efficient across a wider
+range but introduce switching noise that can matter for analog-sensitive
+circuits nearby.
+
+## Dropout voltage
+
+An LDO needs some minimum headroom between input and output to regulate
+correctly - check this against your actual supply voltage, not just the
+nominal one, since a slightly low input (e.g. a discharging battery) can push
+you under dropout before you'd expect.

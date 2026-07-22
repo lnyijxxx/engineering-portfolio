@@ -1,0 +1,57 @@
+---
+title: "Quadruped Robot"
+date: "2026-05-01"
+status: "active"
+tags: ["robotics", "raspberry-pi", "python", "matlab", "embedded-systems"]
+summary: "An 8-DOF embedded robotics platform built to explore inverse kinematics and autonomous locomotion."
+---
+
+## Overview
+
+A four-legged robotic platform designed and built from individual components.
+The robot uses a Raspberry Pi 4 and eight LX-16A serial bus servos to explore
+embedded control, inverse kinematics, and autonomous locomotion.
+
+## Goal
+
+Create a modular robotics testbed that can progress from reliable joint control
+to coordinated walking, ROS 2 integration, vision, and autonomous navigation.
+
+## Architecture
+
+- Raspberry Pi 4 running Python control software on embedded Linux, configured
+  for headless SSH access from a laptop without a dedicated monitor or keyboard
+- USB-to-TTL interface connecting the Pi to the serial servo bus
+- Eight LX-16A servos controlling the hip and knee joints
+- Separate regulated power rails for the servos and onboard computer
+
+## Hardware
+
+- Raspberry Pi 4 Model B
+- 8x LX-16A serial bus servos
+- 12 V, 3000 mAh battery and LM2596 buck converter
+- 3D-printed chassis and custom wiring harness
+
+## Software
+
+- Python servo communication and control
+- MATLAB leg simulation and inverse-kinematics validation
+- Raspberry Pi OS and UART serial communication
+
+## Engineering challenge
+
+Designing a stable electrical architecture for eight servos while maintaining
+reliable Raspberry Pi operation under changing loads. The physical integration
+also needed to remain serviceable and leave room for future sensors.
+
+## Engineering decision
+
+Validate the leg kinematics in MATLAB before commanding the physical hardware.
+This creates a safer, measurable transition from geometry to joint angles and
+reduces the risk of damaging the mechanisms during early development.
+
+## Future development
+
+- Complete inverse kinematics and stable walking gaits
+- Integrate ROS 2 and an onboard camera
+- Add IMU-based stabilization and autonomous navigation

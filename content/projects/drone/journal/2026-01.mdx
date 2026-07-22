@@ -1,0 +1,20 @@
+---
+date: "2026-01-28"
+title: "Q1 2026 — build, ESC calibration hell, first hover"
+---
+
+Frame build went smoothly. The real time sink was ESC calibration: the motors
+would arm but never respond to throttle input from the transmitter. Spent about
+two days on this before finding the cause - the ESCs were in a firmware mode
+that required a per-ESC calibration pass with the battery connected *before*
+the flight controller, not after, which is the opposite of the usual order
+suggested in most guides.
+
+Once that was sorted, first hover in the garage (props off, obviously) showed
+sane motor mixing. Next entry should cover the first real outdoor flight and
+whatever [Mission Planner](/notes/mission-planner) throws at me during
+telemetry setup.
+
+Related: [UART notes](/notes/uart) were useful for debugging the telemetry
+radio link during this stretch too - the radio uses UART under the hood and a
+baud rate mismatch cost me an embarrassing hour.

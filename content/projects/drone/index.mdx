@@ -1,0 +1,43 @@
+---
+title: "Autonomous Drone Platform"
+date: "2026-05-01"
+status: "active"
+tags: ["uav-systems", "pixhawk", "ardupilot", "mission-planner", "embedded-systems"]
+summary: "A Pixhawk-based UAV platform for avionics integration and future autonomous robotics development."
+---
+
+## Overview
+
+A personal UAV platform built from individual components to develop practical
+experience with flight-control hardware, avionics, radio systems, calibration,
+and system-level integration. The current platform uses a Pixhawk flight
+controller running ArduPilot and is configured through Mission Planner.
+
+## Current status
+
+Hardware assembly, Pixhawk installation, Mission Planner configuration, sensor
+calibration, and radio setup are complete. ESC configuration and flight testing
+are in progress. Raspberry Pi companion-computer integration is planned.
+
+## Architecture
+
+- Pixhawk flight controller running ArduPilot
+- Mission Planner ground-control and configuration software
+- FlySky FS-i6X transmitter and paired receiver
+- Four-in-one ESC driving four brushless motors
+- GPS, IMU, safety switch, buzzer, and power hardware
+- Raspberry Pi over MAVLink for future autonomy (planned)
+
+## Engineering workflow
+
+The airframe is being validated in stages: electrical integration, ground
+control communication, sensor and radio calibration, ESC setup, restrained
+motor testing, and finally controlled flight testing. Companion-computer work
+will begin after the flight-critical platform is proven.
+
+## Future development
+
+- Complete ESC setup and controlled flight testing
+- Integrate a Raspberry Pi companion computer over MAVLink
+- Add ROS 2, waypoint missions, and computer vision
+- Explore autonomous navigation and perception

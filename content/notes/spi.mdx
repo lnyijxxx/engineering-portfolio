@@ -1,0 +1,25 @@
+---
+title: "SPI"
+date: "2026-01-06"
+tags: ["spi", "communication-protocols"]
+related: ["uart", "i2c"]
+---
+
+## What it is
+
+Serial Peripheral Interface - a synchronous protocol using a shared clock
+(SCLK), separate data lines for each direction (MOSI/MISO), and a
+per-device chip-select (CS) line.
+
+## Why use it over I2C
+
+Higher throughput (no address overhead, full duplex), simpler slave-side
+implementation. Tradeoff is more pins - one CS line per device versus I2C's
+shared two-wire bus for many devices.
+
+## Clock polarity and phase (CPOL/CPHA)
+
+The most common source of "device doesn't respond" bugs - the four SPI
+modes (0-3) determine which clock edge data is sampled on. Always check the
+datasheet's timing diagram, not just the mode number, since naming
+conventions aren't perfectly consistent across vendors.

@@ -1,0 +1,19 @@
+---
+title: "Clock Configuration"
+date: "2025-11-03"
+tags: ["stm32", "clocks"]
+---
+
+## HSE vs HSI
+
+HSE (external crystal) gives more accurate timing than HSI (internal RC
+oscillator) - matters for USB (which needs tight clock tolerance) and any
+precise timing requirement. For a board with USB, HSE is effectively
+mandatory.
+
+## PLL configuration
+
+STM32CubeMX's clock tree view is worth using even if you're not generating
+code with it - it validates the full chain (HSE -> PLL -> SYSCLK -> bus
+clocks) against each peripheral's max frequency before you find out the hard
+way at runtime.

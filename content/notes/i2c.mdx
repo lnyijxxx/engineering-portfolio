@@ -1,0 +1,26 @@
+---
+title: "I2C"
+date: "2026-01-07"
+tags: ["i2c", "communication-protocols"]
+related: ["uart", "spi"]
+---
+
+## What it is
+
+Inter-Integrated Circuit - a two-wire (SDA/SCL) synchronous bus supporting
+multiple devices via 7-bit (or 10-bit) addressing, with open-drain lines that
+require pull-up resistors.
+
+## Common failure mode: bus lockup
+
+If a device is interrupted mid-transaction (power glitch, MCU reset, sleep
+mode) it can be left holding SDA low, which locks the entire bus for every
+device on it - not just the offending one. Fix is a manual clock-out routine:
+toggle SCL a handful of times to force the stuck device to release SDA, then
+reissue a start condition.
+
+## Pull-up sizing
+
+Too weak (high resistance) and rise time suffers at higher bus speeds; too
+strong (low resistance) and you waste current and can exceed a device's sink
+current rating. 4.7k is a reasonable default for 100kHz on short buses.

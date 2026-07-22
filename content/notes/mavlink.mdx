@@ -1,0 +1,22 @@
+---
+title: "MAVLink"
+date: "2026-01-20"
+tags: ["mavlink", "drone", "communication-protocols"]
+---
+
+## What it is
+
+A lightweight message protocol for communication between a flight controller
+and a ground control station (or companion computer), used by both ArduPilot
+and PX4.
+
+## Structure
+
+Messages are defined in XML dialects and code-generated into each language's
+bindings. Common messages: HEARTBEAT (liveness), GLOBAL_POSITION_INT,
+MISSION_ITEM for waypoint upload.
+
+## Practical note
+
+Telemetry radios carry MAVLink over what is, physically, a UART link -
+see [UART notes](/notes/uart) for the underlying transport debugging.

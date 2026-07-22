@@ -1,0 +1,2 @@
+Replace this with your actual resume.pdf in this same folder.
+The /resume page links to /resume.pdf directly.
